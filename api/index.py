@@ -36,3 +36,7 @@ def lyrics():
 	token = getToken()
 	lyrics = getGeniusLyrics('juju', 'vermissen', token)
 	return lyrics
+
+@app.route('/test')
+def test():
+	return "TESTING"
