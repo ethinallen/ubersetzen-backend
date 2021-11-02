@@ -17,7 +17,7 @@ def getToken():
 	token = response.json()['access_token']
 	return token
 
-def getGeniusLyrics(artist, title, token):
+def getGeniusLyrics(artist, title):
 	token = getToken()
 	genius = lyricsgenius.Genius(token)
 	song = genius.search_song(title, artist)
@@ -33,8 +33,7 @@ def api():
 
 @app.route('/lyrics')
 def lyrics():
-	token = getToken()
-	lyrics = getGeniusLyrics('juju', 'vermissen', token)
+	lyrics = getGeniusLyrics('juju', 'vermissen')
 	return lyrics
 
 @app.route('/test')
