@@ -24,5 +24,5 @@ app = Flask(__name__)
 
 @app.route('/api')
 def api():
-	response = getToken()
+	token = getToken()
 	return token
