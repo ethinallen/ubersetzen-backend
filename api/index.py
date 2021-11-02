@@ -25,7 +25,7 @@ def getGeniusLyrics(artist, title):
 
 app = Flask(__name__)
 
-@app.route('/lyrics/<artist>/<title>')
-def lyrics(artist, title):
-	lyrics = getGeniusLyrics(artist, title)
-	return lyrics
+@app.route('/lyrics/<artist>')
+def lyrics(artist):
+	# lyrics = getGeniusLyrics(artist, title)
+	return artist
