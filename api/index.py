@@ -14,7 +14,6 @@ def getToken():
 	}
 
 	response = requests.post('https://api.genius.com/oauth/token', data=data)
-	print(response['access_token'])
 	token = response.text
 	return token
 
