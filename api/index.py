@@ -29,5 +29,6 @@ app = Flask(__name__)
 @app.route('/api', methods=['GET'])
 def api():
 	artist = request.args.get('artist')
-	# lyrics = getGeniusLyrics(artist, title)
-	return artist
+	title = request.args.get('title')
+	lyrics = getGeniusLyrics(artist, title)
+	return lyrics
