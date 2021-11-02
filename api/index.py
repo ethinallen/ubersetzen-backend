@@ -1,7 +1,6 @@
 from flask import Flask
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
-import requests
 
 from flask import Flask
 
