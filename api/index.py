@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import request
 import requests
 import lyricsgenius
 import os
@@ -25,7 +26,8 @@ def getGeniusLyrics(artist, title):
 
 app = Flask(__name__)
 
-@app.route('/api/<artist>')
+@app.route('/api')
 def api(artist):
+	artist = request.args.get('artist')
 	# lyrics = getGeniusLyrics(artist, title)
 	return artist
