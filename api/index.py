@@ -3,7 +3,7 @@ from http.server import BaseHTTPRequestHandler
 from urllib import parse
 import requests
 from flask import Flask
-import lyricsGenius
+import lyricsgenius
 import os
 
 def getToken():
