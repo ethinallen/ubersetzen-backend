@@ -28,8 +28,8 @@ app = Flask(__name__)
 
 @app.route('/api')
 def api():
-	token = getToken()
-	return token
+	lyrics = getGeniusLyrics('juju', 'vermissen')
+	return lyrics
 
 @app.route('/test')
 def test():
