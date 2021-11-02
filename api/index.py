@@ -1,11 +1,9 @@
 from flask import Flask
-from http.server import BaseHTTPRequestHandler
-from urllib import parse
 import requests
-from flask import Flask
 import lyricsgenius
 import os
 
+# fetch genius lyrics token
 def getToken():
 	data = {
 	  'client_id': 'TjidTt_p0RhWw65nuJpEJH8OoqHjylagsuuOOebC8DTRjw1dgPQ1Gi2phyV1kS28',
@@ -17,6 +15,7 @@ def getToken():
 	token = response.json()['access_token']
 	return token
 
+# get lyrics using genius api key and lyricsgenius library
 def getGeniusLyrics(artist, title):
 	token = getToken()
 	genius = lyricsgenius.Genius(token)
@@ -26,16 +25,7 @@ def getGeniusLyrics(artist, title):
 
 app = Flask(__name__)
 
-@app.route('/api')
-def api():
-	lyrics = getGeniusLyrics('juju', 'vermissen')
-	return lyrics
-
-@app.route('/test')
-def test():
-	return "TESTING"
-
-@app.route('/lyrics')
-def lyrics():
-	lyrics = getGeniusLyrics('juju', 'vermissen')
+@app.route('/lyrics/<artist>/<title>')
+def lyrics(artist, title):
+	lyrics = getGeniusLyrics(artist, title)
 	return lyrics
