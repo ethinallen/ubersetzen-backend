@@ -25,7 +25,7 @@ def getGeniusLyrics(artist, title):
 
 app = Flask(__name__)
 
-@app.route('/api')
-def api():
+@app.route('/api/<artist>')
+def api(artist=None):
 	# lyrics = getGeniusLyrics(artist, title)
-	return 'artist'
+	return artist
