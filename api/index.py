@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import request
+from flask import Flask, request, jsonify
 import requests
 import lyricsgenius
 import os
@@ -31,4 +30,5 @@ def api():
 	artist = request.args.get('artist')
 	title = request.args.get('title')
 	lyrics = getGeniusLyrics(artist, title)
-	return lyrics
+	data = jsonify({'lyrics' : lyrics})
+	return data
