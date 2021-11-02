@@ -31,13 +31,8 @@ def api():
 	token = getToken()
 	return token
 
-@app.route('/lyrics/<artist>/<title>')
+@app.route('/lyrics')
 def lyrics(artist, title):
 	token = getToken()
-	lyrics = getGeniusLyrics(artist, title, token)
+	lyrics = getGeniusLyrics('juju', 'vermissen', token)
 	return lyrics
-
-
-if __name__ == "__main__":
-	token = getToken()
-	getGeniusLyrics('liebster wannsinn', 'Fynn Kliemann', token)
