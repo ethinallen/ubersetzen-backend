@@ -32,7 +32,7 @@ def api():
 	return token
 
 @app.route('/lyrics')
-def lyrics(artist, title):
+def lyrics():
 	token = getToken()
 	lyrics = getGeniusLyrics('juju', 'vermissen', token)
 	return lyrics
