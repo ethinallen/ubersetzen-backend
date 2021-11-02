@@ -28,4 +28,4 @@ app = Flask(__name__)
 @app.route('/lyrics')
 def lyrics():
 	# lyrics = getGeniusLyrics(artist, title)
-	return '<h1>B I G ~~~~> S A D'
+	return '<h1>B I G ~~~~> S A D</h1>'
