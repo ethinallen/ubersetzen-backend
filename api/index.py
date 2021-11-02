@@ -31,11 +31,11 @@ def api():
 	token = getToken()
 	return token
 
+@app.route('/test')
+def test():
+	return "TESTING"
+
 @app.route('/lyrics')
 def lyrics():
 	lyrics = getGeniusLyrics('juju', 'vermissen')
 	return lyrics
-
-@app.route('/test')
-def test():
-	return "TESTING"
