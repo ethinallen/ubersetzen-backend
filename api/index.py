@@ -15,7 +15,7 @@ def getToken():
 
 	response = requests.post('https://api.genius.com/oauth/token', data=data)
 	print(response['access_token'])
-	token = response
+	token = response.text
 	return token
 
 # def getGeniusLyrics(title, artist):
@@ -25,6 +25,5 @@ app = Flask(__name__)
 
 @app.route('/api')
 def api():
-	response=getToken()
-	token=response.text
-    return token
+	response = getToken()
+	return token
