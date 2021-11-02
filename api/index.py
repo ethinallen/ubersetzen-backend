@@ -14,11 +14,15 @@ def getToken():
 	}
 
 	response = requests.post('https://api.genius.com/oauth/token', data=data)
-	token = response.text
+	token = response.json()['access_token']
 	return token
 
-# def getGeniusLyrics(title, artist):
-# 	response =
+def getGeniusLyrics(artist, title, token):
+	token = getToken()
+	genius = lyricsgenius.Genius(token)
+	song = genius.search_song(title, artist)
+	lyrics = song.lyrics
+	return lyrics
 
 app = Flask(__name__)
 
@@ -26,3 +30,14 @@ app = Flask(__name__)
 def api():
 	token = getToken()
 	return token
+
+@app.route('/lyrics/<artist>/<title>')
+def lyrics():
+	token = getToken()
+	lyrics = getGeniusLyrics(artist, title, token)
+	return lyrics
+
+
+if __name__ == "__main__":
+	token = getToken()
+	getGeniusLyrics('liebster wannsinn', 'Fynn Kliemann', token)
