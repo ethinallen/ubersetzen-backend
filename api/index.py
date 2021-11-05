@@ -8,7 +8,7 @@ def get_mgmt_token():
 
 	conn = http.client.HTTPSConnection("")
 
-	payload = "grant_type=client_credentials&client_id=%24%7Baccount.clientId%7D&client_secret=YOUR_CLIENT_SECRET&audience=https%3A%2F%2F%24%7Baccount.namespace%7D%2Fapi%2Fv2%2F"
+	payload = "grant_type=client_credentials&client_id=%24%7Baccount.clientId%7D&client_secret={" + os.environ["MGMT_CLIENT_SECRET"] + "}&audience=https%3A%2F%2F%24%7Baccount.namespace%7D%2Fapi%2Fv2%2F"
 
 	headers = { 'content-type': "application/x-www-form-urlencoded" }
 
