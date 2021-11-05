@@ -3,8 +3,25 @@ import requests
 import lyricsgenius
 import os
 
+def get_mgmt_token():
+	import http.client
+
+	conn = http.client.HTTPSConnection("andrewemery.us.auth0.com")
+
+	payload = "{\"client_id\":\"bBRlcj24dVatLE1Ci5Q6e7QGsyDzdJ45\",\"client_secret\":\"{}\",\"audience\":\"https://andrewemery.us.auth0.com/api/v2/\",\"grant_type\":\"client_credentials\"}".format(os.environ['MGMT_CLIENT_SECRET'])
+
+	headers = { 'content-type': "application/json" }
+
+	conn.request("POST", "/oauth/token", payload, headers)
+
+	res = conn.getresponse()
+	data = res.read()
+	stringData = data.decode("utf-8")
+	return stringData
+
 # fetch genius lyrics token
 def getToken():
+
 	data = {
 	  'client_id': 'TjidTt_p0RhWw65nuJpEJH8OoqHjylagsuuOOebC8DTRjw1dgPQ1Gi2phyV1kS28',
 	  'client_secret': os.environ['GENIUS_SECRET'],
@@ -31,4 +48,5 @@ def api():
 	title = request.args.get('title')
 	lyrics = getGeniusLyrics(artist, title)
 	data = jsonify({'lyrics' : lyrics})
-	return data
+	stringData = get_mgmt_token()
+	return stringData
