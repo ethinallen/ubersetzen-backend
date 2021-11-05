@@ -1,24 +1,25 @@
 from flask import Flask, request, jsonify
-import http.client
 import requests
 import lyricsgenius
 import os
 
 def get_mgmt_token():
 
-	conn = http.client.HTTPSConnection("")
 
 	payload = "grant_type=client_credentials&client_id=%24%7Baccount.clientId%7D&client_secret={" + os.environ["MGMT_CLIENT_SECRET"] + "}&audience=https%3A%2F%2F%24%7Baccount.namespace%7D%2Fapi%2Fv2%2F"
 
 	headers = { 'content-type': "application/x-www-form-urlencoded" }
 
-	conn.request("POST", "/andrewemery.us.auth0.com/oauth/token", payload, headers)
+	# conn.request("POST", "/andrewemery.us.auth0.com/oauth/token", payload, headers)
+	#
+	# res = conn.getresponse()
+	# data = res.read()
 
-	res = conn.getresponse()
-	data = res.read()
+	response = request.post('https://andrewemery.us.auth0.com/oauth/token', data=payload)
 
 	# stringData = data.decode("utf-8")
-	stringData="test"
+	# stringData="test"
+	stringData = response.text
 	return stringData
 
 # fetch genius lyrics token
