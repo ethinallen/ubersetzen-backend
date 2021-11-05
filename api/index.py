@@ -16,7 +16,8 @@ def get_mgmt_token():
 
 	res = conn.getresponse()
 	data = res.read()
-	stringData = data.decode("utf-8")
+	# stringData = data.decode("utf-8")
+	stringData="test"
 	return stringData
 
 # fetch genius lyrics token
@@ -44,9 +45,9 @@ app = Flask(__name__)
 
 @app.route('/api', methods=['GET'])
 def api():
-	artist = request.args.get('artist')
-	title = request.args.get('title')
-	lyrics = getGeniusLyrics(artist, title)
-	data = jsonify({'lyrics' : lyrics})
+	# artist = request.args.get('artist')
+	# title = request.args.get('title')
+	# lyrics = getGeniusLyrics(artist, title)
+	# data = jsonify({'lyrics' : lyrics})
 	stringData = get_mgmt_token()
 	return stringData
