@@ -15,7 +15,7 @@ def get_mgmt_token():
 	# res = conn.getresponse()
 	# data = res.read()
 
-	response = request.post('https://andrewemery.us.auth0.com/oauth/token', data=payload)
+	response = requests.post('https://andrewemery.us.auth0.com/oauth/token', data=payload)
 
 	# stringData = data.decode("utf-8")
 	# stringData="test"
